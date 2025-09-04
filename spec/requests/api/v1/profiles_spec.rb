@@ -7,7 +7,7 @@ RSpec.describe "Api::V1::Profiles", type: :request do
   let!(:user) { create(:user) }
   let(:token) { jwt_encode(user_id: user.id) }
   let(:headers) { { 'Authorization' => "Bearer #{token}" } }
-  let(:invalid_headers) { { 'Authorization' => "Bearer invalidtoken" } }
+  let(:invalid_headers) { { 'Authorization' => "Bearer invalid token" } }
 
   describe "GET /api/v1/profile" do
     context "when the user is authenticated" do

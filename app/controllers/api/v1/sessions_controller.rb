@@ -1,7 +1,6 @@
 class Api::V1::SessionsController < Api::V1::ApplicationController
 
   skip_before_action :authenticate_request, only: [:create]
-  include Authentication
 
   def create
     @user = User.find_by(email: params[:email].downcase)

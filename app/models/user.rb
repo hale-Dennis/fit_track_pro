@@ -2,6 +2,7 @@ class User < ApplicationRecord
 
   has_secure_password
   enum :role, { member: 'member', coach: 'coach' }
+  has_one_attached :profile_picture
 
   before_validation :downcase_email
 
