@@ -3,11 +3,11 @@ require "jwt"
 module Authentication
   extend ActiveSupport::Concern
 
-  SECRET_KEY = Rails.application.credentials.jwt_secret
+  SECRET_KEY = ENV.fetch('JWT_SECRET_KEY', Rails.application.credentials.jwt_secret)
 
   def jwt_encode(payload, exp = 24.hours.from_now)
     payload[:exp] = exp.to_i
-    JWT.encode(payload, SECRET_KEY)
+    JWT.encode(payload, SECRET_KEY, 'HS256')
   end
 
   def decoded_token
