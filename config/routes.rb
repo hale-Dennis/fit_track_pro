@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :users, only: [:create]
       post 'login', to: 'sessions#create'
       resource :profile, only: [:show, :update]
+      resources :workout_plans, only: [:create]
     end
   end
 end

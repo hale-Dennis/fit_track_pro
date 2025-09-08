@@ -10,6 +10,10 @@ RSpec.describe User, type: :model do
     it { should validate_uniqueness_of(:email).case_insensitive }
   end
 
+  describe 'associations' do
+    it { should have_many(:workout_plans).dependent(:destroy) }
+  end
+
   describe 'callbacks' do
     it 'downcases email before validation' do
       user = build(:user, email: 'TEST@EXAMPLE.COM')
